@@ -2,16 +2,17 @@ package com.qa.app.SwimmablePackage.FishPackage;
 import java.awt.Color;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class Blobfish extends Fish {
     
-    private static boolean isUgly = true;
+    private Optional<Boolean> isUgly = Optional.ofNullable(null);
 
     public Blobfish(int length, float weight, Color color) {
         super(length, weight, color);
     }
 
-    public static boolean getIsUgly() {
+    public Optional<Boolean> getIsUgly() {
         return isUgly;
     }
 

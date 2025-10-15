@@ -13,10 +13,18 @@ public class Main {
 
         Blobfish panya = new Blobfish(15, 8.0f, Color.PINK);
 
+        System.out.println("Is Blob Fish ugly?");
+        if(panya.getIsUgly().isPresent()){
+            System.out.println(panya.getIsUgly().get() ? "Is Ugly" : "Is Not Ugly");
+        } else {
+            System.out.println("Not sure!");
+        }
+
         ArrayList<Swimmable> swimmables = new ArrayList<>();
         swimmables.add(nemo);
         swimmables.add(panya);
         swimmables.add(new Human("Ranya"));
+
 
         // Filter humans that can think from swimmables list
         ArrayList<Human> thinkers = Human.filterHumans(swimmables);
