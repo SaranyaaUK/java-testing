@@ -1,5 +1,6 @@
 package com.qa.app;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -18,7 +19,7 @@ public class HomosapiensMockTest {
     @Mock
     private Homosapiens homosapiensMock;
 
-    // Setup iq to retirn 40
+    // Setup iq to return 40
     @BeforeEach
     public void setUp() {
         Mockito.when(homosapiensMock.getIq()).thenReturn(40);
@@ -27,5 +28,11 @@ public class HomosapiensMockTest {
     @Test
     public void testIQ() {
         assertEquals(40, homosapiensMock.getIq());
+    }
+
+    @Test
+    public void testThink() {
+        assertEquals(40, homosapiensMock.getIq());
+        assertEquals(false, homosapiensMock.think());
     }
 }
