@@ -31,7 +31,6 @@ public class HomosapiensMockTest {
 
     @Test
     public void testThink() {
-//        assertEquals(40, homosapiensMock.getIq());
         assertEquals(false, homosapiensMock.think());
     }
 }

@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(BlobfishParameterResolver.class)
-public class BlobfishParamerterisedTest {
+public class BlobfishParameterizedTest {
 
     @ParameterizedTest
     @ValueSource(ints = {10, 20, 30, 40})
