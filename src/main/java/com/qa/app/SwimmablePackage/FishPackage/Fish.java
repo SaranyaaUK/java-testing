@@ -2,6 +2,7 @@ package SwimmablePackage.FishPackage;
 import SwimmablePackage.Swimmable;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public abstract class Fish implements Swimmable {
     private int length;
@@ -19,25 +20,37 @@ public abstract class Fish implements Swimmable {
         this(length, weight, Color.GRAY);
     }
 
-    public abstract void eat();
+    public abstract ArrayList<String> eat();
 
     public void swim() {
         System.out.println("I'm swimming!!");
     }
 
-    public int getLength() {
+    public int getLength() throws IllegalArgumentException {
+        if (length <= 0) {
+            throw new IllegalArgumentException("Length must be positive");
+        }
         return length;
     }
 
-    public void setLength(int length) {
+    public void setLength(int length) throws IllegalArgumentException {
+        if (length <= 0) {
+            throw new IllegalArgumentException("Length must be positive");
+        }
         this.length = length;
     }
 
-    public float getWeight() {
+    public float getWeight() throws IllegalArgumentException {
+        if (weight <= 0) {
+            throw new IllegalArgumentException("Weight must be positive");
+        }
         return weight;
     }
 
-    public void setWeight(float weight) {
+    public void setWeight(float weight) throws IllegalArgumentException {
+        if (weight <= 0) {
+            throw new IllegalArgumentException("Weight must be positive");
+        }
         this.weight = weight;
     }
 
@@ -45,7 +58,10 @@ public abstract class Fish implements Swimmable {
         return color;
     }
 
-    public void setColor(Color color) {
+    public void setColor(Color color) throws IllegalArgumentException {
+        if (color == null) {
+            throw new IllegalArgumentException("Color cannot be null");
+        }
         this.color = color;
     }
 

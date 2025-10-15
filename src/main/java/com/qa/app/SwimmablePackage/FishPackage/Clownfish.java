@@ -1,5 +1,6 @@
 package SwimmablePackage.FishPackage;
 import java.awt.Color;
+import java.util.ArrayList;
 
 public class Clownfish extends Fish {
     public Clownfish(int length, float weight) {
@@ -7,8 +8,13 @@ public class Clownfish extends Fish {
     }
 
     @Override
-    public void eat() {
-        System.out.println("I eat algae, zooplankton (like copepods), small crustaceans, and leftover food from their host anemones.");
+    public ArrayList<String> eat() {
+        ArrayList<String> food = new ArrayList<>();
+        food.add("algae");
+        food.add("zooplankton (like copepods)");
+        food.add("small crustaceans");
+        food.add("leftover food from their host anemones");
+        return food;
     }
 
     @Override

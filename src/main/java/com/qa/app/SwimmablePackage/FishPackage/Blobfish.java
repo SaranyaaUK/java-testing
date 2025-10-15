@@ -1,6 +1,8 @@
 package SwimmablePackage.FishPackage;
 import java.awt.Color;
 
+import java.util.ArrayList;
+
 public class Blobfish extends Fish {
     
     private static boolean isUgly = true;
@@ -14,8 +16,11 @@ public class Blobfish extends Fish {
     }
 
     @Override
-    public void eat() {
-        System.out.println("I eat small invertebrates and carrion that float around me");
+    public ArrayList<String> eat() {
+        ArrayList<String> food = new ArrayList<>();
+        food.add("small invertebrates");
+        food.add("carrion that float around me");
+        return food;
     }
 
     @Override
