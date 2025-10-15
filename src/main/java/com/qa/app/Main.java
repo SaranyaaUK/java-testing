@@ -21,7 +21,7 @@ public class Main {
         for (Swimmable swimmable : swimmables) {
             System.out.println(swimmable.toString());
             try {
-                swimmable.swim(1);
+                swimmable.swim(Swimmable.Direction.UP);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }

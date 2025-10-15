@@ -50,20 +50,20 @@ public class Human extends Homosapiens implements Swimmable {
     }
 
     @Override
-    public Point swim(int direction) throws CantSwimException {
+    public Point swim(Swimmable.Direction direction) throws CantSwimException {
         trySwimming();
 
         switch (direction) {
-            case 0: // up
+            case UP: // up
                 location.translate(0, 1);
                 break;
-            case 1: // down
+            case DOWN: // down
                 location.translate(0, -1);
                 break;
-            case 2: // left
+            case LEFT: // left
                 location.translate(-1, 0);
                 break;
-            case 3: // right
+            case RIGHT: // right
                 location.translate(1, 0);
                 break;
         }

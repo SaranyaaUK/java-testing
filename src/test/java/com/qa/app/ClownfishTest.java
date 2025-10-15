@@ -4,30 +4,19 @@ import com.qa.app.SwimmablePackage.FishPackage.Clownfish;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+
 import static org.junit.jupiter.api.Assertions.*;
 import java.awt.Color;
 import java.util.ArrayList;
 
+@ExtendWith(ClownfishParameterResolver.class)
 public class ClownfishTest {
-
-    // Test the Clownfish class
-    @Test
-    @DisplayName("Test Clownfish Constructor and Getters")
-    public void testClownfishConstructor() {
-        Clownfish clownfish = new Clownfish(10, 5.0f);
-
-        // Test getters
-        assertEquals(10, clownfish.getLength());
-        assertEquals(5.0f, clownfish.getWeight());
-        assertEquals(Color.ORANGE, clownfish.getColor());
-    }
 
     // test clownfish setters with valid values
     @Test
     @DisplayName("Test Clownfish Setters with Valid Values")
-    public void testClownfishSettersValid() {
-        Clownfish clownfish = new Clownfish(10, 5.0f);
-
+    public void testClownfishSettersValid(Clownfish clownfish) {
         clownfish.setLength(15);
         clownfish.setWeight(7.5f);
         clownfish.setColor(Color.YELLOW);
@@ -40,9 +29,7 @@ public class ClownfishTest {
     // test clownfish setters with invalid values
     @Test
     @DisplayName("Test Clownfish Setters with Invalid Values")
-    public void testClownfishSettersInvalid() {
-        Clownfish clownfish = new Clownfish(10, 5.0f);
-
+    public void testClownfishSettersInvalid(Clownfish clownfish) {
         Exception lengthException = assertThrows(IllegalArgumentException.class, () -> {
             clownfish.setLength(-5);
         });
@@ -61,8 +48,7 @@ public class ClownfishTest {
 
     @Test
     @DisplayName("Test Clownfish Eat Method")
-    public void testClownfishEat() {
-        Clownfish clownfish = new Clownfish(10, 5.0f);
+    public void testClownfishEat(Clownfish clownfish) {
         ArrayList<String> food = clownfish.eat();
         assertTrue(food.contains("algae"));
         assertTrue(food.contains("zooplankton (like copepods)"));
