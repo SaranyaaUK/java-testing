@@ -1,14 +1,18 @@
-package SwimmablePackage.HomosapiensPackage;
+package com.qa.app.SwimmablePackage.HomosapiensPackage;
 
-import SwimmablePackage.Swimmable;
+import com.qa.app.SwimmablePackage.Swimmable;
 
-import SwimmablePackage.HomosapiensPackage.CantSwimException;
+import com.qa.app.SwimmablePackage.HomosapiensPackage.CantSwimException;
+
+import java.awt.Point;
 
 public class Human extends Homosapiens implements Swimmable {
     String name;
+    Point location;
 
     public Human(String name) {
         this.name = name;
+        this.location = new Point(0, 0);
     }
 
     @Override
@@ -35,8 +39,23 @@ public class Human extends Homosapiens implements Swimmable {
     }
 
     @Override
-    public void swim() throws CantSwimException {
+    public Point swim(int direction) throws CantSwimException {
         trySwimming();
-        System.out.println("I'm swimming!");
+
+        switch (direction) {
+            case 0: // up
+                location.translate(0, 1);
+                break;
+            case 1: // down
+                location.translate(0, -1);
+                break;
+            case 2: // left
+                location.translate(-1, 0);
+                break;
+            case 3: // right
+                location.translate(1, 0);
+                break;
+        }
+        return location;
     }
 }

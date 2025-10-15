@@ -1,4 +1,4 @@
-package SwimmablePackage.HomosapiensPackage;
+package com.qa.app.SwimmablePackage.HomosapiensPackage;
 
 public abstract class Homosapiens {
 

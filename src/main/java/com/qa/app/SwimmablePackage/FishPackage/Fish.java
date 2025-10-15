@@ -1,19 +1,23 @@
-package SwimmablePackage.FishPackage;
-import SwimmablePackage.Swimmable;
+package com.qa.app.SwimmablePackage.FishPackage;
+import com.qa.app.SwimmablePackage.Swimmable;
 
 import java.awt.*;
 import java.util.ArrayList;
+
+import com.qa.app.SwimmablePackage.HomosapiensPackage.CantSwimException;
 
 public abstract class Fish implements Swimmable {
     private int length;
     private float weight;
     private Color color;
-    protected static Boolean hasGills = true;
+    protected Boolean hasGills = true;
+    private Point location;
 
     public Fish(int length, float weight, Color color){
         this.length = length;
         this.weight = weight;
         this.color = color;
+        this.location = new Point(0, 0);
     }
 
     public Fish(int length, float weight){
@@ -22,8 +26,26 @@ public abstract class Fish implements Swimmable {
 
     public abstract ArrayList<String> eat();
 
-    public void swim() {
-        System.out.println("I'm swimming!!");
+    @Override
+    public Point swim(int direction) throws CantSwimException {
+        if (!hasGills) {
+            throw new CantSwimException("Exception: I can't swim without gills!");
+        }
+        switch (direction) {
+            case 0: // up
+                location.translate(0, 1);
+                break;
+            case 1: // down
+                location.translate(0, -1);
+                break;
+            case 2: // left
+                location.translate(-1, 0);
+                break;
+            case 3: // right
+                location.translate(1, 0);
+                break;
+        }
+        return location;
     }
 
     public int getLength() throws IllegalArgumentException {
@@ -65,12 +87,12 @@ public abstract class Fish implements Swimmable {
         this.color = color;
     }
 
-    public static Boolean getHasGills() {
+    public Boolean getHasGills() {
         return hasGills;
     }
 
-    public static void setHasGills(Boolean hasGills) {
-        Fish.hasGills = hasGills;
+    public void setHasGills(Boolean hasGills) {
+        this.hasGills = hasGills;
     }
 
     @Override

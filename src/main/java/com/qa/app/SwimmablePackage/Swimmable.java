@@ -1,9 +1,12 @@
-package SwimmablePackage;
+package com.qa.app.SwimmablePackage;
 
-import SwimmablePackage.HomosapiensPackage.CantSwimException;
+import com.qa.app.SwimmablePackage.HomosapiensPackage.CantSwimException;
+
+import java.awt.Point;
 
 public interface Swimmable {
-
-    public abstract void swim() throws CantSwimException;
+    // Return set of coordinates where the object 
+    // is located after swimming in random direction
+    public abstract Point swim(int direction) throws CantSwimException;
 
 }

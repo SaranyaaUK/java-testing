@@ -1,9 +1,11 @@
 package com.qa.app;
 
-import SwimmablePackage.FishPackage.Clownfish;
+import com.qa.app.SwimmablePackage.FishPackage.Clownfish;
+import com.qa.app.SwimmablePackage.HomosapiensPackage.CantSwimException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.awt.Color;
+import java.awt.Point;
 import java.util.ArrayList;
 
 public class ClownfishTest {
@@ -64,5 +66,37 @@ public class ClownfishTest {
         assertTrue(food.contains("leftover food from their host anemones"));
 
         assertEquals(4, food.size());
+    }
+
+    @Test
+    public void testClownfishSwim() {
+        Clownfish clownfish = new Clownfish(10, 5.0f);
+
+        try {
+            Point newPosition = clownfish.swim(0); // swim up
+            assertEquals(new Point(0, 1), newPosition);
+
+            newPosition = clownfish.swim(3); // swim right
+            assertEquals(new Point(1, 1), newPosition);
+
+            newPosition = clownfish.swim(1); // swim down
+            assertEquals(new Point(1, 0), newPosition);
+
+            newPosition = clownfish.swim(2); // swim left
+            assertEquals(new Point(0, 0), newPosition);
+        } catch (CantSwimException e) {
+            fail("Clownfish should be able to swim");
+        }
+    }
+
+    @Test
+    public void testClownfishInvalidSwim() {
+        Clownfish clownfish = new Clownfish(10, 5.0f);
+        clownfish.setHasGills(false); // Simulate a fish without gills
+
+        Exception swimException = assertThrows(CantSwimException.class, () -> {
+            clownfish.swim(0);
+        });
+        assertEquals("Exception: I can't swim without gills!", swimException.getMessage());
     }
 }

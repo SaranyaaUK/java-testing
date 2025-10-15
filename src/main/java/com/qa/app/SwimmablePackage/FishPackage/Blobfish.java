@@ -1,4 +1,4 @@
-package SwimmablePackage.FishPackage;
+package com.qa.app.SwimmablePackage.FishPackage;
 import java.awt.Color;
 
 import java.util.ArrayList;

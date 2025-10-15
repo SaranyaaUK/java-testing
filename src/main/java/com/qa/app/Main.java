@@ -1,10 +1,10 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-import SwimmablePackage.FishPackage.Blobfish;
-import SwimmablePackage.FishPackage.Clownfish;
-import SwimmablePackage.HomosapiensPackage.Human;
-import SwimmablePackage.Swimmable;
+import com.qa.app.SwimmablePackage.FishPackage.Blobfish;
+import com.qa.app.SwimmablePackage.FishPackage.Clownfish;
+import com.qa.app.SwimmablePackage.HomosapiensPackage.Human;
+import com.qa.app.SwimmablePackage.Swimmable;
 
 public class Main {
     public static void main(String[] args) {
@@ -21,7 +21,7 @@ public class Main {
         for (Swimmable swimmable : swimmables) {
             System.out.println(swimmable.toString());
             try {
-                swimmable.swim();
+                swimmable.swim(1);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
