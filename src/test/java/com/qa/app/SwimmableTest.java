@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import com.qa.app.SwimmablePackage.FishPackage.Blobfish;
@@ -68,5 +69,19 @@ public class SwimmableTest {
         assertThrows(CantSwimException.class, () -> {
             human.swim(0); // Attempt to swim with 0 stamina
         });
+    }
+
+    @RepeatedTest(2)
+    @DisplayName("Test swim in same direction twice")
+    public void testSwimTwiceUp() {
+        Human human = new Human("Alice");
+        try {
+            Point newPosition = human.swim(0); // swim up
+        } catch (CantSwimException e) {
+            fail("Human should be able to swim with sufficient stamina");
+        }
+
+        assertEquals(90, human.getStamina());
+        System.out.println("Stamina : " + human.getStamina());
     }
 }
