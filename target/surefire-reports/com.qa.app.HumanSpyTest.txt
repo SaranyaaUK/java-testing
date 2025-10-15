@@ -1,0 +1,15 @@
+-------------------------------------------------------------------------------
+Test set: com.qa.app.HumanSpyTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.418 s <<< FAILURE! -- in com.qa.app.HumanSpyTest
+com.qa.app.HumanSpyTest.testThink -- Time elapsed: 0.416 s <<< ERROR!
+org.mockito.exceptions.misusing.NotAMockException: 
+
+Argument passed to when() is not a mock!
+Example of correct stubbing:
+    doThrow(new RuntimeException()).when(mock).someMethod();
+	at com.qa.app.HumanSpyTest.setUp(HumanSpyTest.java:20)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+

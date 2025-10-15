@@ -12,14 +12,15 @@ public class Human extends Homosapiens implements Swimmable {
     private int stamina;
 
     public Human(String name) {
+        super();
         this.name = name;
         this.location = new Point(0, 0);
         this.stamina = 100;
     }
 
     @Override
-    public void think() {
-        System.out.println("I'm using my brain!");
+    public Boolean think() {
+        return iq > 60;
     }
 
     public void trySwimming() throws CantSwimException {
