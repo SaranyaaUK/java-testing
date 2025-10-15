@@ -18,6 +18,14 @@ public class Main {
         swimmables.add(panya);
         swimmables.add(new Human("Ranya"));
 
+        // Filter humans that can think from swimmables list
+        ArrayList<Human> thinkers = Human.filterHumans(swimmables);
+        System.out.println("Humans that can think:");
+        for (Human thinker : thinkers) {
+            System.out.println(thinker.toString());
+        }
+        System.out.println(" ");
+
         for (Swimmable swimmable : swimmables) {
             System.out.println(swimmable.toString());
             try {

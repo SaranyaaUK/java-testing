@@ -6,6 +6,8 @@ import com.qa.app.SwimmablePackage.HomosapiensPackage.CantSwimException;
 
 import java.awt.Point;
 
+import java.util.ArrayList;
+
 public class Human extends Homosapiens implements Swimmable {
     private String name;
     private Point location;
@@ -46,6 +48,9 @@ public class Human extends Homosapiens implements Swimmable {
         StringBuilder sb = new StringBuilder();
         sb.append("Human: ");
         sb.append("Name: ").append(name);
+        sb.append(", IQ: ").append(iq);
+        sb.append(", Stamina: ").append(stamina);
+        sb.append(", Location: (").append(location.x).append(", ").append(location.y).append(")");
         return sb.toString();  
     }
 
@@ -68,5 +73,16 @@ public class Human extends Homosapiens implements Swimmable {
                 break;
         }
         return location;
+    }
+
+    // filter Humans from list of Objects
+    public static <T> ArrayList<Human> filterHumans(ArrayList<T> swimmables) {
+        ArrayList<Human> humans = new ArrayList<>();
+        for (T swimmable : swimmables) {
+            if (swimmable instanceof Human) {
+                humans.add((Human) swimmable);
+            }
+        }
+        return humans;
     }
 }
