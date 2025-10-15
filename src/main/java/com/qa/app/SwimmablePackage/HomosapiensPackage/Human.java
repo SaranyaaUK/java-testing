@@ -7,12 +7,14 @@ import com.qa.app.SwimmablePackage.HomosapiensPackage.CantSwimException;
 import java.awt.Point;
 
 public class Human extends Homosapiens implements Swimmable {
-    String name;
-    Point location;
+    private String name;
+    private Point location;
+    private int stamina;
 
     public Human(String name) {
         this.name = name;
         this.location = new Point(0, 0);
+        this.stamina = 100;
     }
 
     @Override
@@ -20,12 +22,20 @@ public class Human extends Homosapiens implements Swimmable {
         System.out.println("I'm using my brain!");
     }
 
-    // Generate random either 1 or 0
     public void trySwimming() throws CantSwimException {
-        int randomValue = (int) (Math.random() * 2);
-        if (randomValue == 0) {
-            throw new CantSwimException("Exception: I can't swim!");
+        if (stamina <= 0) {
+            throw new CantSwimException("Exception: I'm too tired to swim!");
         }
+        stamina -= 10; // Decrease stamina with each swim attempt
+    }
+
+    // getters and setters for swimmable attributes
+    public int getStamina() {
+        return stamina;
+    }
+
+    public void setStamina(int stamina) {
+        this.stamina = stamina;
     }
 
     // Override to string method
